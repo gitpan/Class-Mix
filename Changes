@@ -1,3 +1,7 @@
+version 0.001; 2006-08-12
+
+  * PREFIX parameter for genpkg() to allow it to root packages anywhere
+
 version 0.000; 2004-06-27
 
   * initial released version

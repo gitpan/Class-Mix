@@ -11,6 +11,7 @@ Class::Mix - dynamic class mixing
 	use Class::Mix qw(genpkg);
 
 	$package = genpkg;
+	$package = genpkg("Digest::Foo::");
 
 =head1 DESCRIPTION
 
@@ -24,9 +25,10 @@ package Class::Mix;
 use warnings;
 use strict;
 
+use Carp qw(croak);
 use Exporter;
 
-our $VERSION = "0.000";
+our $VERSION = "0.001";
 
 our @ISA = qw(Exporter);
 
@@ -68,7 +70,7 @@ dynamically-generated `anonymous' classes, use C<genpkg> (below).
 
 =cut
 
-sub genpkg();
+sub genpkg(;$);
 
 {
 	my %mixtures;
@@ -77,7 +79,7 @@ sub genpkg();
 		return $_[0] if @_ == 1;
 		my $recipe = join("", map { length($_)."_".$_ } @_);
 		return $mixtures{$recipe} if exists $mixtures{$recipe};
-		my $pkg = genpkg;
+		my $pkg = genpkg("Class::Mix::");
 		$mixtures{$recipe} = $pkg;
 		{
 			no strict "refs";
@@ -87,7 +89,7 @@ sub genpkg();
 	}
 }
 
-=item genpkg
+=item genpkg[(PREFIX)]
 
 This function selects and returns a package name that has not been
 previously used.  The name returned is an ordinary bareword-form package
@@ -101,21 +103,29 @@ is about to return has not already been used, and will avoid returning
 such names, but it cannot guarantee that a later-loaded module will not
 create a clash.
 
+PREFIX, if present, specifies where the resulting package will go.
+It must be either the empty string (to create a top-level package)
+or a bareword followed by "::" (to create a package under that name).
+For example, "Digest::" could be specified to ensure that the resulting
+package has a name starting with "Digest::", so that C<< Digest->new >>
+will accept it as the name of a message digest algorithm.
+
 =cut
 
 {
-	my $prefix = "__GP";
 	my $n = 0;
-	sub genpkg() {
+	sub genpkg(;$) {
+		my($prefix) = @_;
+		$prefix = "" unless defined $prefix;
+		croak "`$prefix' is not a valid module name prefix"
+			unless $prefix =~ /\A(?:[a-zA-Z_]\w*::(?:\w+::)*)?\z/;
+		no strict "refs";
 		my $pkgtail;
 		do {
-			$pkgtail = $prefix.$n++;
-		} while(exists $Class::Mix::{$pkgtail."::"});
-		my $pkgname = "Class::Mix::".$pkgtail;
-		{
-			no strict "refs";
-			%{$pkgname."::"} = ();
-		}
+			$pkgtail = "__GP".$n++;
+		} while(exists ${$prefix || "::"}{$pkgtail."::"});
+		my $pkgname = $prefix.$pkgtail;
+		%{$pkgname."::"} = ();
 		return $pkgname;
 	}
 }

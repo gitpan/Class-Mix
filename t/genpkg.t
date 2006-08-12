@@ -1,11 +1,14 @@
-use Test::More tests => 3;
+use Test::More tests => 5;
 
 BEGIN { use_ok "Class::Mix", qw(genpkg); }
 
 {
 	no warnings;
-	$Class::Mix::__GP1::foo = 1;
+	$__GP1::foo = 1;
+	$Foo::Bar::__GP4::foo = 1;
 }
 
-is(genpkg, "Class::Mix::__GP0");
-is(genpkg, "Class::Mix::__GP2");
+is genpkg, "__GP0";
+is genpkg, "__GP2";
+is genpkg("Foo::Bar::"), "Foo::Bar::__GP3";
+is genpkg("Foo::Bar::"), "Foo::Bar::__GP5";
