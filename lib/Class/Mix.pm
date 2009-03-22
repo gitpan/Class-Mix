@@ -26,12 +26,10 @@ use warnings;
 use strict;
 
 use Carp qw(croak);
-use Exporter;
 
-our $VERSION = "0.001";
+our $VERSION = "0.002";
 
-our @ISA = qw(Exporter);
-
+use base "Exporter";
 our @EXPORT_OK = qw(mix_class genpkg);
 
 =head1 FUNCTIONS
@@ -89,7 +87,7 @@ sub genpkg(;$);
 	}
 }
 
-=item genpkg[(PREFIX)]
+=item genpkg([PREFIX])
 
 This function selects and returns a package name that has not been
 previously used.  The name returned is an ordinary bareword-form package
@@ -142,7 +140,9 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2004 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2004, 2006, 2009 Andrew Main (Zefram) <zefram@fysh.org>
+
+=head1 LICENSE
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

@@ -1,0 +1,35 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.55.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 8b1ba118823d0c7a38f70a9a23570595016a0b46 .cvsignore
+SHA1 5d56562e165169c344a449dcb73e5ec9d0103a55 Build.PL
+SHA1 865fbefddfd9961e1fb7c654e804a79a8494f878 Changes
+SHA1 dbb7be4c2c73fbba4dcdbaca86311e6a13c6c254 MANIFEST
+SHA1 535619aa73e48e05ad985ffe44f362cb759a7e2c META.yml
+SHA1 f39315b8e83202006e8a916c6a58725d104f75ec Makefile.PL
+SHA1 c0c20918a346f3c290fdf559bd1f6f00c75292c1 README
+SHA1 6d58d37f4027a652674c18d860c8ebea02b39770 lib/Class/Mix.pm
+SHA1 db5e4690590f3abcfddce8ac23642870cddcbf35 t/genpkg.t
+SHA1 c79e21ca13cc87078e7b53fbdc6827305e89f354 t/mix.t
+SHA1 0e141eecf3ca4903ef38d9413b5403a9ddb0392f t/pod_cvg.t
+SHA1 74a957cd8b93f25672ecc6aa578a671d084dd343 t/pod_syn.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.9 (GNU/Linux)
+
+iEYEARECAAYFAknGc+kACgkQOV9mt2VyAVF5cQCgpAy95rKkVq04YmHonXjbelW6
+FLsAnRKYc+xYUY/O1XGrScT8XlZ99C4+
+=zVrn
+-----END PGP SIGNATURE-----
