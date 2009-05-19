@@ -27,9 +27,9 @@ use strict;
 
 use Carp qw(croak);
 
-our $VERSION = "0.002";
+our $VERSION = "0.003";
 
-use base "Exporter";
+use parent "Exporter";
 our @EXPORT_OK = qw(mix_class genpkg);
 
 =head1 FUNCTIONS
@@ -116,7 +116,8 @@ will accept it as the name of a message digest algorithm.
 		my($prefix) = @_;
 		$prefix = "" unless defined $prefix;
 		croak "`$prefix' is not a valid module name prefix"
-			unless $prefix =~ /\A(?:[a-zA-Z_]\w*::(?:\w+::)*)?\z/;
+			unless $prefix =~ /\A(?:[a-zA-Z_][0-9a-zA-Z_]*::
+					        (?:[0-9a-zA-Z_]+::)*)?\z/x;
 		no strict "refs";
 		my $pkgtail;
 		do {
