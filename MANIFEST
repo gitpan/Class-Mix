@@ -8,6 +8,8 @@ README
 lib/Class/Mix.pm
 t/genpkg.t
 t/mix.t
+t/mro_no.t
+t/mro_yes.t
 t/pod_cvg.t
 t/pod_syn.t
 SIGNATURE    Added here by Module::Build

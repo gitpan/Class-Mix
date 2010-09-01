@@ -1,3 +1,26 @@
+version 0.004; 2010-09-01
+
+  * mro option for mix_class(), to control the method resolution order
+    of the mixture class
+
+  * prefix option for mix_class(), to control where the mixture class
+    is located
+
+  * document that PREFIX missing from genpkg() means "don't care",
+    and change the actual default from "" to "Class::Mix::"
+
+  * check for required Perl version at runtime
+
+  * remove extra block around each sub definition, for readability
+
+  * use full stricture in test suite
+
+  * in Build.PL, explicitly declare configure-time requirements
+
+  * remove bogus "exit 0" from Build.PL
+
+  * add MYMETA.yml to .cvsignore
+
 version 0.003; 2009-05-19
 
   * bugfix: avoid unreliable "\w" in parsing PREFIX parameter for genpkg()
