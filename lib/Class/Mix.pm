@@ -33,7 +33,7 @@ use Carp qw(croak);
 use Params::Classify 0.000 qw(is_undef is_string is_ref);
 use if _DO_MRO, "mro";
 
-our $VERSION = "0.004";
+our $VERSION = "0.005";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(mix_class genpkg);
@@ -212,7 +212,7 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2004, 2006, 2009, 2010
+Copyright (C) 2004, 2006, 2009, 2010, 2011
 Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 LICENSE

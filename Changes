@@ -1,3 +1,11 @@
+version 0.005; 2011-10-28
+
+  * include META.json in distribution
+
+  * convert .cvsignore to .gitignore
+
+  * add MYMETA.json to .gitignore
+
 version 0.004; 2010-09-01
 
   * mro option for mix_class(), to control the method resolution order
